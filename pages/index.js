@@ -8,12 +8,14 @@ import {
   Button,
 } from 'antd'
 import ProLayout from '@ant-design/pro-layout';
+import styles from './style.less';
 
 const FormItem = Form.Item
 const Option = Select.Option
 
 export default () => (
   <ProLayout style={{ marginTop: 100 }}>
+    <div className={styles.red} />
     <Form layout="horizontal">
       <FormItem
         label="Input Number"

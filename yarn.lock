@@ -930,6 +930,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
+"@weco/next-plugin-transpile-modules@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.npm.taobao.org/@weco/next-plugin-transpile-modules/download/@weco/next-plugin-transpile-modules-2.2.1.tgz#7ca35e6ee1589f58fc1dd5320df73ae2bc9a6fd5"
+
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
   resolved "https://registry.npmjs.org/@xtuc/ieee754/-/ieee754-1.2.0.tgz#eef014a3145ae477a1cbc00cd1e552336dceb790"
@@ -3539,6 +3543,10 @@ negotiator@0.6.2:
 neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
+
+next-compose-plugins@2.2.0:
+  version "2.2.0"
+  resolved "https://registry.npm.taobao.org/next-compose-plugins/download/next-compose-plugins-2.2.0.tgz#95cd8eb40ab0652070d76572fb648354191628b0"
 
 next@9.1.4:
   version "9.1.4"
