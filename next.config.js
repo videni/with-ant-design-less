@@ -12,6 +12,36 @@ const themeVariables = lessToJS(
 const withTM = require('@weco/next-plugin-transpile-modules');
 const withPlugins = require('next-compose-plugins');
 
+const nextConfig = {
+  webpack: (config, options) => {
+    const { isServer } = options;
+
+    if (isServer) {
+      const antStyles = /antd\/.*?\/style.*?/;
+      const origExternals = [...config.externals];
+      config.externals = [
+        (context, request, callback) => {
+          if (request.match(antStyles)) return callback()
+          if (typeof origExternals[0] === 'function') {
+            origExternals[0](context, request, callback)
+          } else {
+            callback()
+          }
+        },
+        ...(typeof origExternals[0] === 'function' ? [] : origExternals),
+      ];
+
+      config.module.rules.unshift({
+        test: antStyles,
+        use: 'ignore-loader',
+      });
+    }
+
+    return config;
+  },
+};
+
+
 module.exports = withPlugins([
   [withTM, {
     transpileModules: [
@@ -28,4 +58,4 @@ module.exports = withPlugins([
       modifyVars: themeVariables, // make your antd custom effective
     },
   }]
-])
+], nextConfig)
