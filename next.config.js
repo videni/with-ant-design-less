@@ -6,7 +6,7 @@ const path = require('path')
 
 // Where your antd-custom.less file lives
 const themeVariables = lessToJS(
-  fs.readFileSync(path.resolve(__dirname, './assets/antd-custom.less'), 'utf8')
+  fs.readFileSync(path.resolve(__dirname, './themes/default.less'), 'utf8')
 );
 
 const withTM = require('@weco/next-plugin-transpile-modules');
@@ -15,7 +15,11 @@ const withPlugins = require('next-compose-plugins');
 const nextConfig = {
   webpack: (config, options) => {
     const { isServer } = options;
-
+    config.module.rules.unshift({
+      test: /\.css$/,
+      use: 'ignore-loader',
+    });
+    
     if (isServer) {
       const antStyles = /antd\/.*?\/style.*?/;
       const origExternals = [...config.externals];
